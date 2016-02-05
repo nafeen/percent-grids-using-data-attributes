@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>Photon Test</title>
+	<style type="text/css">
+		/* setting default style for the grid */
+		.grid {	background: black; height: 10%; text-align: center; }
+		p { margin: 0; font-family: 'Calibri'; font-size: 20px; font-weight:500; color: white;vertical-align: text-bottom; height: 100%; line-height: 100% }
+		.refresh { display: block; position: absolute; bottom: 30%; right: 20%; }
+		.refresh p { color: black; }
+	</style>
+</head>
+<body>
+	<div data-grid='100' class='grid'><p>100%</p></div>
+	<div data-grid='90' class='grid'><p>90%</p></div>
+	<div data-grid='80' class='grid'><p>80%</p></div>
+	<div data-grid='70' class='grid'><p>70%</p></div>
+	<div data-grid='60' class='grid'><p>60%</p></div>
+	<div data-grid='50' class='grid'><p>50%</p></div>
+	<div data-grid='40' class='grid'><p>40%</p></div>
+	<div data-grid='30' class='grid'><p>30%</p></div>
+	<div data-grid='20' class='grid'><p>20%</p></div>
+	<div data-grid='10' class='grid'><p>10%</p></div>
+	<div class='refresh'><p>Boring colors? Hit refresh!</p></div>
+		
+	<script type="text/javascript">
+		// function to generate random colour for the grids
+		function getRandomColor() {
+	    var letters = '0123456789ABCDEF'.split('');
+	    var color = '#';
+	    for (var i = 0; i < 6; i++ ) {
+	        color += letters[Math.floor(Math.random() * 16)];
+	    }
+	    return color;
+		}
+		var grid = document.getElementsByClassName('grid');		// this returns an array of matching elements
+		for(var i = 0; i < grid.length; i++) {								// traversing the array
+		  var gridAttr = grid[i].getAttribute('data-grid');
+		  grid[i].style.width = gridAttr + '%';								// changing the width as per data attribute 
+		  grid[i].style.backgroundColor = getRandomColor();		// changing the bgcolor of every element
+		}
+	</script>
+</body>
+</html>
